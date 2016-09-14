@@ -1,0 +1,24 @@
+[general]
+name=qgiscompat
+qgisMinimumVersion=2.0
+qgisMaximumVersion=2.12
+description=
+about=
+version=0.1
+
+# tags are comma separated with spaces allowed
+tags=PyQT, Python3, Qt5
+
+homepage=https://github.com/opengigch/qgiscompat
+tracker=https://github.com/opengigch/qgiscompat/issues
+repository=https://github.com/opengigch/qgiscompat
+icon=resources/img/icons/icon.png
+# experimental flag
+experimental=False
+
+# deprecated flag (applies to the whole plugin, not just a single version
+deprecated=False
+
+# Author contact information
+author=OPENGIS.ch
+email=info@opengis.ch
