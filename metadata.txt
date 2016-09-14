@@ -1,8 +1,8 @@
 [general]
-name=qgiscompat
+name=PyQt5QGIS2compat
 qgisMinimumVersion=2.0
 qgisMaximumVersion=2.12
-description=
+description=A PyQt5 compatibility layer for QGIS < 2.14
 about=
 version=0.1
 
@@ -16,7 +16,7 @@ icon=resources/img/icons/icon.png
 # experimental flag
 experimental=False
 
-# deprecated flag (applies to the whole plugin, not just a single version
+# deprecated flag (applies to the whole plugin, not just a single version)
 deprecated=False
 
 # Author contact information
