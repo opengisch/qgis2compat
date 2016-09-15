@@ -1,13 +1,12 @@
 [general]
-name=PyQt5QGIS2compat
-qgisMinimumVersion=2.0
-qgisMaximumVersion=2.12
-description=A PyQt5 compatibility layer for QGIS < 2.14
+name=QGIS2compat
+qgisMinimumVersion=2.8
+description=A QGIS 3 compatibility layer for QGIS >= 2.8
 about=
 version=0.1
 
 # tags are comma separated with spaces allowed
-tags=PyQT, Python3, Qt5
+tags=QGIS3, PyQT5, Qt5, Python3
 
 homepage=https://github.com/opengigch/qgiscompat
 tracker=https://github.com/opengigch/qgiscompat/issues
