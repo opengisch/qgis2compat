@@ -78,8 +78,8 @@ class TestQgis2Compat(TestCase):
         sys.path.append(os.path.abspath(__file__ + "/../../../"))
 
         import qgis2compat
-        print dir(qgis2compat.qgis)
+        print dir(qgis2compat.qgis.PyQt)
         assert 'QGIS2Compat_exist' in dir(qgis2compat.qgis.PyQt)
 
         from qgis.PyQt.QtCore import qVersion
-        from qgis.PyQt.QGIS2Compat_test import QGIS2Compat_exist
+        from qgis2compat.qgis.PyQt.QGIS2Compat_test import QGIS2Compat_exist

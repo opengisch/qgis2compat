@@ -5,13 +5,13 @@ from qgis2compat import log
 
 log('Monkeypatching QgsVectorLayer')
 
-def QgsVectorLayer_writeLayerXML(self, XMLMapLayer, XMLDocument):
+def writeLayerXML(self, XMLMapLayer, XMLDocument):
     self.writeLayerXML(XMLMapLayer, XMLDocument)
 
-qgis.core.QgsVectorLayer.writeLayerXml = QgsVectorLayer_writeLayerXML
+qgis.core.QgsVectorLayer.writeLayerXml = writeLayerXML
 
 
-def QgsVectorLayer_readLayerXML(self, XMLMapLayer):
+def readLayerXML(self, XMLMapLayer):
     self.readLayerXML(XMLMapLayer)
 
-qgis.core.QgsVectorLayer.readLayerXml = QgsVectorLayer_readLayerXML
+qgis.core.QgsVectorLayer.readLayerXml = readLayerXML
