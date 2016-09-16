@@ -26,16 +26,23 @@ def classFactory(iface):  # pylint: disable=invalid-name
     :type iface: QgsInterface
     """
 
+    plugin_name = os.path.dirname(__file__).split(os.path.sep)[-1]
+    plugin_name = qgis.utils.pluginMetadata(plugin_name, 'name')
     try:
         # qgis.PyQt is available in QGIS >=2.14
         from qgis.PyQt.QtCore import qVersion
         # qgis.utils.QGis is available in QGIS < 3
         if hasattr(qgis.utils, 'QGis'):
             import qgis2compat.apicompat
+            qgis2compat.log('apicompat used in %s' % plugin_name)
+    except ImportError:
+        try:
+            # we are in QGIS < 2.14
+            import qgis2compat
+            import qgis2compat.apicompat
+            qgis2compat.log('PyQt and apicompat used in %s' % plugin_name)
         except ImportError:
             import traceback
-            plugin_name = os.path.dirname(__file__).split(os.path.sep)[-1]
-            plugin_name = qgis.utils.pluginMetadata(plugin_name, 'name')
             message = ('The Plugin %s uses the QGIS2compat plugin. '
                        'Please install it with the plugin manager it and '
                        'restart QGIS. For more information read '
@@ -52,38 +59,17 @@ in each module where you do PyQt imports you should use the following
 structure. 
 
 ```Python
-try:
-    from qgis.PyQt.QtCore import QFileDialog
-except ImportError:
-    from qgis2compat.PyQt.QtCore import QFileDialog
+from qgis.PyQt.QtCore import QFileDialog
 ```
 
 This will guarantee that the imports come from the most appropriate and 
 up-to-date place and gives you PyQt4 and PyQt5 support for QGIS >= 2.8.
 
-Of course if you want to avoid the try except you could just make QGIS2compat 
-an hard dependency of your plugin by just importing like this:
-```Python
-from qgis2compat.PyQt.QtCore import QFileDialog
-```
-Be warned that importing this way, will prevent using the qgis.PyQt package 
-available starting from QGIS 2.14. This is no problem for QGIS >= 2.14 and < 3
-as QGIS2compat.PyQT is exactly the same package.
-For QGIS 3 This shouldn't be a major problem as long as QGIS2compat gets 
-updated. Just be warned.
-
 
 Updating your plugin
 --------------------
-This Regexp is useful for a first step into converting your imports.
-I used it quite sucessfully in PyCharm. 
-Only caveat you first need to make sure that you don't have multiline
-imports. If you have a better solution, please share :)
-
-```Regexp
-from qgis2compat\.(PyQt.*)
-try:\n    from qgis.$1\nexcept ImportError:\n    from qgis2compat.$1
-```
+just replace all the `from PyQt4` and `import PyQt4` with `from qgis.PyQt` and
+ `import qgis.PyQt`.
 
 
 Adding new apicompat fixes
