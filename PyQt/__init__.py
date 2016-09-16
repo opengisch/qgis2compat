@@ -23,7 +23,7 @@ __copyright__ = '(C) 2016, Marco Bernasocchi'
 # This will get replaced with a git SHA1 when you do a git archive
 __revision__ = '$Format:%H$'
 
-
+is_from_qgis2compat = True
 from QtCore import *
 from Qsci import *
 from QtGui import *
@@ -36,4 +36,3 @@ from QtWebKit import *
 from QtWebKitWidgets import *
 from QtWidgets import *
 from QtXml import *
-from QGIS2compat_test import *

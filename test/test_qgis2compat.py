@@ -77,9 +77,19 @@ class TestQgis2Compat(TestCase):
         #emulate QGIS path
         sys.path.append(os.path.abspath(__file__ + "/../../../"))
 
-        import qgis2compat
-        print dir(qgis2compat.qgis.PyQt)
-        assert 'QGIS2Compat_exist' in dir(qgis2compat.qgis.PyQt)
+        import qgis
+        qgis_package_path = sys.modules['qgis'].__file__
+        pyqt_package_path = sys.modules['qgis.PyQt'].__file__
 
+        #the qgis global package should have nothing to do with qgis2compat
+        self.assertNotIn('qgis2compat', qgis_package_path)
+        #the qgis.PyQt global package shouldcome from qgis2compat
+        self.assertIn('/qgis2compat/PyQt/__init__.py', pyqt_package_path)
+
+        # try importing a special member existing only in qgis2compat
+        from qgis.PyQt import is_from_qgis2compat
+
+        # try various imports
         from qgis.PyQt.QtCore import qVersion
-        from qgis2compat.qgis.PyQt.QGIS2Compat_test import QGIS2Compat_exist
+        import qgis.PyQt
+        import qgis.PyQt.QtGui

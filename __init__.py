@@ -20,7 +20,7 @@
  *                                                                         *
  ***************************************************************************/
 """
-
+import sys
 import qgis.utils
 
 
@@ -29,10 +29,9 @@ def log(message):
 
 # qgis.utils.QGis is available in QGIS < 3
 if hasattr(qgis.utils, 'QGis'):
-    import qgis
     import qgis2compat.PyQt
     log('setting qgis.PyQt = qgis2compat.PyQt')
-    qgis.PyQt = qgis2compat.PyQt
+    sys.modules["qgis.PyQt"] = qgis2compat.PyQt
 
 
 # noinspection PyPep8Naming
