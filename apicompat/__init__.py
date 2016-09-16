@@ -11,6 +11,8 @@ has_runned = False
 if not has_runned and hasattr(qgis.utils, 'QGis'):
     has_runned = True
     log('Running apicompat')
+
+    # Here import all the compatibility fixes modules
     import qgis2compat.apicompat.qgsvectorlayer
 
 
