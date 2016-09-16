@@ -1,8 +1,5 @@
 import qgis.utils
-
-
-def log(message):
-    print('QGIS2compat: %s' % message)
+from qgis2compat import log
 
 
 # Dealing with a QGIS 2 version, monkey patch some things

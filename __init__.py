@@ -21,6 +21,8 @@
  ***************************************************************************/
 """
 
+def log(message):
+    print('QGIS2compat: %s' % message)
 
 # noinspection PyPep8Naming
 def classFactory(iface):  # pylint: disable=invalid-name

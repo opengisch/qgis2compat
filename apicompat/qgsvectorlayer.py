@@ -1,6 +1,6 @@
 import qgis.core
 import qgis.utils
-from qgis2compat.apicompat import log
+from qgis2compat import log
 
 
 log('Monkeypatching QgsVectorLayer')
