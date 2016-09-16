@@ -36,3 +36,4 @@ from QtWebKit import *
 from QtWebKitWidgets import *
 from QtWidgets import *
 from QtXml import *
+from QGIS2compat_test import *
