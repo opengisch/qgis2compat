@@ -90,7 +90,7 @@ Adding new apicompat fixes
 --------------------------
 To add a new api compatibility fix, just create (or add to an existing one) a
 new module in apicompat and import it in `__init__.py__` like it is done for 
-the qgsvectorlayer.py
+the [qgsvectorlayer.py](apicompat/qgsvectorlayer.py)
 
 As QGIS2compat works on a fairly low level, we __require__ unit tests for each
-fix
+fix to be included in each pull request.
