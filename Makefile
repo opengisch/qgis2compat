@@ -20,14 +20,14 @@
 
 
 PLUGINNAME = QGIS2compat
-PEP8EXCLUDE=pydev,resources_rc.py,conf.py,third_party,ui
+PEP8EXCLUDE=plugin_upload.py
 
 
 #################################################
 # Normally you would not need to edit below here
 #################################################
 
-PLUGIN_UPLOAD = $(c)/../scripts/plugin_upload.py
+PLUGIN_UPLOAD = $(c)/plugin_upload.py
 
 default: test
 
@@ -49,7 +49,7 @@ test: pep8 pylint
 	@echo "e.g. source run-env-linux.sh <path to qgis install>; make test"
 	@echo "----------------------"
 
-package: compile
+package:
 	# Create a zip package of the plugin named $(PLUGINNAME).zip.
 	# This requires use of git (your plugin development directory must be a
 	# git repository).
