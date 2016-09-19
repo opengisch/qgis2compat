@@ -8,9 +8,9 @@ version=0.1
 # tags are comma separated with spaces allowed
 tags=QGIS3, PyQT5, Qt5, Python3
 
-homepage=https://github.com/opengisch/qgiscompat
-tracker=https://github.com/opengisch/qgiscompat/issues
-repository=https://github.com/opengisch/qgiscompat
+homepage=https://github.com/opengisch/qgis2compat
+tracker=https://github.com/opengisch/qgis2compat/issues
+repository=https://github.com/opengisch/qgis2compat
 icon=resources/img/icons/icon.png
 # experimental flag
 experimental=True
