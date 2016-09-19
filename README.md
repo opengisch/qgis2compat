@@ -115,3 +115,9 @@ the [qgsvectorlayer.py](apicompat/qgsvectorlayer.py)
 
 As QGIS2compat works on a fairly low level, we __require__ unit tests for each
 fix to be included in each pull request.
+
+
+Need professional help?
+-----------------------
+OPENGIS.ch can help you updating all your plugins and with any QGIS related 
+problem you have. [Contact us](http://opengis.ch/contact) for a quote
