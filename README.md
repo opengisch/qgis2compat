@@ -68,8 +68,16 @@ up-to-date place and gives you PyQt4 and PyQt5 support for QGIS >= 2.8.
 
 Updating your plugin
 --------------------
-just replace all the `from PyQt4` and `import PyQt4` with `from qgis.PyQt` and
- `import qgis.PyQt`.
+This can be done automatically by the 2to3 tool included in QGIS sourcecode. 
+Please note that it is not the plain 2to3 python tool and can be found
+at https://github.com/qgis/QGIS/blob/master/scripts/2to3
+This tool will fix many (probably not all) issues with your code and make it 
+compatible with Python 3.
+
+After running 2to3, update your `__init__.py` as explained above.
+
+once done, it is time to run your tests (which you of course have written
+before migrating) and fix the minor glitches that might have appeared.
 
 
 Adding new apicompat fixes

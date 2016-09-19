@@ -1,3 +1,4 @@
+# coding=utf-8
 from unittest import TestCase
 
 
@@ -11,4 +12,3 @@ class TestApicompat(TestCase):
         import apicompat
         qgis.core.QgsVectorLayer.writeLayerXml
         qgis.core.QgsVectorLayer.writeLayerXML
-

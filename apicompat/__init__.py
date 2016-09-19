@@ -1,3 +1,4 @@
+# coding=utf-8
 import qgis.utils
 from qgis2compat import log
 
@@ -11,5 +12,3 @@ if not has_runned and hasattr(qgis.utils, 'QGis'):
 
     # Here import all the compatibility fixes modules
     import qgis2compat.apicompat.qgsvectorlayer
-
-

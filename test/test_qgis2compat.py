@@ -1,3 +1,4 @@
+# coding=utf-8
 import sys
 import os
 
@@ -74,16 +75,16 @@ class TestQgis2Compat(TestCase):
                     raise
 
     def test_new_init(self):
-        #emulate QGIS path
+        # emulate QGIS path
         sys.path.append(os.path.abspath(__file__ + "/../../../"))
 
         import qgis
         qgis_package_path = sys.modules['qgis'].__file__
         pyqt_package_path = sys.modules['qgis.PyQt'].__file__
 
-        #the qgis global package should have nothing to do with qgis2compat
+        # the qgis global package should have nothing to do with qgis2compat
         self.assertNotIn('qgis2compat', qgis_package_path)
-        #the qgis.PyQt global package shouldcome from qgis2compat
+        # the qgis.PyQt global package shouldcome from qgis2compat
         self.assertIn('/qgis2compat/PyQt/__init__.py', pyqt_package_path)
 
         # try importing a special member existing only in qgis2compat

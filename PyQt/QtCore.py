@@ -24,13 +24,15 @@ __copyright__ = '(C) 2015, Matthias Kuhn'
 __revision__ = '$Format:%H$'
 
 import sip
-for api in ["QDate", "QDateTime", "QString", "QTextStream", "QTime", "QUrl", "QVariant"]:
+for api in ["QDate", "QDateTime", "QString", "QTextStream", "QTime", "QUrl",
+            "QVariant"]:
     sip.setapi(api, 2)
 
 from PyQt4.QtCore import *
 from PyQt4.QtGui import QItemSelectionModel, QSortFilterProxyModel
 
-# Add a __nonzero__ method onto QPyNullVariant so we can check for null values easier.
+# Add a __nonzero__ method onto QPyNullVariant so we can check for null values
+# easier.
 #   >>> value = QPyNullVariant("int")
 #   >>> if value:
 #   >>>       print "Not a null value"

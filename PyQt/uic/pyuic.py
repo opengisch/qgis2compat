@@ -25,7 +25,8 @@ __revision__ = '$Format:%H$'
 
 
 import sip
-for api in ["QDate", "QDateTime", "QString", "QTextStream", "QTime", "QUrl", "QVariant"]:
+for api in ["QDate", "QDateTime", "QString", "QTextStream", "QTime", "QUrl",
+            "QVariant"]:
     sip.setapi(api, 2)
 
 from PyQt4.uic import pyuic
