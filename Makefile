@@ -27,7 +27,7 @@ PEP8EXCLUDE=plugin_upload.py
 # Normally you would not need to edit below here
 #################################################
 
-PLUGIN_UPLOAD = $(c)/plugin_upload.py
+PLUGIN_UPLOAD = $(c)./plugin_upload.py
 
 default: full_test
 .PHONY: test
