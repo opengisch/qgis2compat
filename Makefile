@@ -29,9 +29,10 @@ PEP8EXCLUDE=plugin_upload.py
 
 PLUGIN_UPLOAD = $(c)/plugin_upload.py
 
-default: test
+default: full_test
+.PHONY: test
 
-test: pep8 pylint
+full_test: test pep8 pylint
 	@echo
 	@echo "----------------------"
 	@echo "Regression Test Suite"
@@ -49,7 +50,20 @@ test: pep8 pylint
 	@echo "e.g. source run-env-linux.sh <path to qgis install>; make test"
 	@echo "----------------------"
 
-package:
+test: #pep8 pylint
+	@echo
+	@echo "----------------------"
+	@echo "Regression Test Suite"
+	@echo "----------------------"
+
+	@# Preceding dash means that make will continue in case of errors
+	@-export PYTHONPATH=`pwd`:$(PYTHONPATH); \
+		export QGIS_DEBUG=0; \
+		export QGIS_LOG_FILE=/dev/null; \
+		nosetests -v --with-id \
+		3>&1 1>&2 2>&3 3>&- || true
+
+package: test
 	# Create a zip package of the plugin named $(PLUGINNAME).zip.
 	# This requires use of git (your plugin development directory must be a
 	# git repository).

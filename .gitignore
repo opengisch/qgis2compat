@@ -115,3 +115,7 @@ ENV/
 
 # Rope project settings
 .ropeproject
+/QGIS2compat.zip
+/.noseids
+.noseids
+QGIS2compat.zip
