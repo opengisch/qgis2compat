@@ -3,6 +3,33 @@ QGIS2compat
 
 A QGIS 3 compatibility layer for QGIS >= 2.8
 
+PyQt compat
+-----------
+Lots of work has already gone into 2.14 to support PyQt 4 and 5 with the same 
+code (Kudos to jef-n and mkuhn).
+
+```Python
+# QGIS before 2.14
+from PyQt4
+
+# QGIS 2.14 and after
+from qgis.PyQt
+```
+
+The qgis python package will then use the appropriate PyQt for you. But not all
+can be fixed in QGIS itself and this is why QGIS2compat can help you.
+If you still need to rely on QGIS < 2.14 writing `from qgis.PyQt` will not work 
+for you as the qgis.PyQt package is simply not there. And this is one of the two
+use case where QGIS2compat can help you. This feature is complete.
+
+QGIS 2-3 API compatibility
+--------------------------------------
+The other use case of QGIS2compat plugin is the availability of a QGIS API 
+compatibility layer which lets you write your code for QGIS 3 API and it will 
+take care of adapting it to the QGIS 2 API. This feature is an ongoing work in 
+progress since we are in the middle of API breakage period. So we do need your 
+help to keeping adding new apicompat fixes (see below).
+
 Usage
 -----
 In your plugin's `__init__.py` you should put something like the example 
