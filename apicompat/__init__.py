@@ -12,3 +12,4 @@ if not has_runned and hasattr(qgis.utils, 'QGis'):
 
     # Here import all the compatibility fixes modules
     import qgis2compat.apicompat.qgsvectorlayer
+    import qgis2compat.apicompat.qgsrasterlayer

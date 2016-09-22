@@ -26,6 +26,7 @@ __revision__ = '$Format:%H$'
 is_from_qgis2compat = True
 from QtCore import *
 from Qsci import *
+from Qt import *
 from QtGui import *
 from QtNetwork import *
 from QtPrintSupport import *

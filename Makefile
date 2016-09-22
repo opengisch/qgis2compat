@@ -19,7 +19,7 @@
 # ***************************************************************************/
 
 
-PLUGINNAME = QGIS2compat
+PLUGINNAME = qgis2compat
 PEP8EXCLUDE=plugin_upload.py
 
 
