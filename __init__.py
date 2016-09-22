@@ -36,6 +36,8 @@ if hasattr(qgis.utils, 'QGis'):
     sys.modules["qgis.PyQt"] = qgis2compat.PyQt
 
 
+
+# FROM here is all needed to make QGIS's plugin manager happy
 # noinspection PyPep8Naming
 def classFactory(iface):  # pylint: disable=invalid-name
     return QgisCompat()
