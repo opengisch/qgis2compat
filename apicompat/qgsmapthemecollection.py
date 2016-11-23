@@ -44,7 +44,7 @@ qgis.core.QgsMapThemeCollection.applyMapThemeCheckedLegendNodesToLayer = applyPr
 def presetStyleOverrides(self, name):
     return self.presetStyleOverrides(name)
 
-qgis.core.QgsMapThemeCollection.mapThemeStyleOverride = presetStyleOverrides
+qgis.core.QgsMapThemeCollection.mapThemeStyleOverrides = presetStyleOverrides
 
 def addVisibleLayersToPreset(self, parent, rec):
     return self.addVisibleLayersToPreset(parent, rec)
