@@ -3,17 +3,17 @@ name=QGIS2compat
 qgisMinimumVersion=2.8
 description=A QGIS 3 compatibility layer for QGIS >= 2.8
 about=a plugin that lets you write your python plugins code only once and gives you QGIS 2.8 - 3 and PyQt4 -5 support.
-version=0.3
+version=0.3.2
 
 # tags are comma separated with spaces allowed
-tags=QGIS3, PyQT5, Qt5, Python3
+tags=QGIS3, PyQt5, Qt5, Python3
 
 homepage=https://github.com/opengisch/qgis2compat
 tracker=https://github.com/opengisch/qgis2compat/issues
 repository=https://github.com/opengisch/qgis2compat
 icon=resources/img/icons/icon.png
 # experimental flag
-experimental=True
+experimental=False
 
 # deprecated flag (applies to the whole plugin, not just a single version)
 deprecated=False
