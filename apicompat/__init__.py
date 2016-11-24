@@ -15,3 +15,4 @@ if not initialized and hasattr(qgis.utils, 'QGis'):
     import qgis2compat.apicompat.qgsrasterlayer
     import qgis2compat.apicompat.qgsmapthemecollection
     import qgis2compat.apicompat.qgsproject
+    import qgis2compat.apicompat.qgsdatasourceuri
