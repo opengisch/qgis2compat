@@ -1,7 +1,26 @@
 QGIS2compat
 ===========
 
-A QGIS 3 compatibility layer for QGIS >= 2.8
+A QGIS 3 compatibility layer plugin for QGIS >= 2.8
+
+What's this?
+------------
+
+This plugin is for QGIS plugin developers who want to make their plugins
+compatible with QGIS 2 and QGIS 3 and do not want to maintain two separate
+codebases.
+
+How does it work?
+-----------------
+
+1. Write your code for QGIS 3
+2. When running your plugin on QGIS 2, make QGIS2compat a dependency.
+
+QGIS2compat will then mock the QGIS 3 API onto the QGIS 2 API.
+
+* That is it will take care of making renamed methods and classes
+* Will make sure the unified PyQt imports `from qgis.PyQt` are available
+* Will possibly do other magic we don't know yet
 
 PyQt compat
 -----------
