@@ -24,12 +24,14 @@ import sys
 import qgis.utils
 
 
+
 def log(message):
     print('QGIS2compat: %s' % message)
 
 
 # qgis.utils.QGis is available in QGIS < 3
 if hasattr(qgis.utils, 'QGis'):
+    QGIS_VERSION = qgis.utils.QGis.QGIS_VERSION_INT
     import qgis2compat.PyQt
 
     log('setting qgis.PyQt = qgis2compat.PyQt')
