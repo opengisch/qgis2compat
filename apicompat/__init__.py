@@ -17,5 +17,6 @@ if not initialized and hasattr(qgis.utils, 'QGis'):
     import qgis2compat.apicompat.qgsproject
     import qgis2compat.apicompat.qgsdatasourceuri
     import qgis2compat.apicompat.qgsmaplayerproxymodel
+    import qgis2compat.apicompat.utils
     if QGIS_VERSION >= 21200:
         import qgis2compat.apicompat.qgsmapthemecollection
