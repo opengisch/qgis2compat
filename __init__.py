@@ -44,10 +44,11 @@ def _qgis2_version():
 # qgis.utils.QGis is available in QGIS < 3
 if hasattr(qgis.utils, 'QGis'):
     import qgis2compat.PyQt
-    QGIS_VERSION = _qgis2_version()
 
     log('setting qgis.PyQt = qgis2compat.PyQt')
     sys.modules["qgis.PyQt"] = qgis2compat.PyQt
+
+    QGIS_VERSION = _qgis2_version()
 else:
     QGIS_VERSION = qgis.core.Qgis.QGIS_VERSION_INT
 
