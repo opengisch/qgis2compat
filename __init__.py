@@ -41,18 +41,6 @@ def _qgis2_version():
     return version
 
 
-# qgis.utils.QGis is available in QGIS < 3
-if hasattr(qgis.utils, 'QGis'):
-    import qgis2compat.PyQt
-
-    log('setting qgis.PyQt = qgis2compat.PyQt')
-    sys.modules["qgis.PyQt"] = qgis2compat.PyQt
-
-    QGIS_VERSION = _qgis2_version()
-else:
-    QGIS_VERSION = qgis.core.Qgis.QGIS_VERSION_INT
-
-
 # FROM here is all needed to make QGIS's plugin manager happy
 # noinspection PyPep8Naming
 def classFactory(iface):  # pylint: disable=invalid-name
@@ -62,7 +50,19 @@ def classFactory(iface):  # pylint: disable=invalid-name
 class QgisCompat(object):
     # noinspection PyPep8Naming
     def initGui(self):
-        pass
+        # qgis.utils.QGis is available in QGIS < 3
+        if hasattr(qgis.utils, 'QGis'):
+            if 'qgis2compat.PyQt' in sys.modules:
+                del sys.modules['qgis2compat.PyQt']
+            import qgis2compat.PyQt
+
+            log('setting qgis.PyQt = qgis2compat.PyQt')
+            self.original_module = sys.modules['qgis.PyQt']
+            sys.modules["qgis.PyQt"] = qgis2compat.PyQt
+
+            QGIS_VERSION = _qgis2_version()
+        else:
+            QGIS_VERSION = qgis.core.Qgis.QGIS_VERSION_INT
 
     def unload(self):
-        pass
+        sys.modules['qgis.PyQt'] = self.original_module
