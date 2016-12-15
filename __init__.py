@@ -89,7 +89,7 @@ class QgisCompat(object):
         self.iface.messageBar().pushWarning(
                 "qgis2compat warning",
                 "Due to the very special functionality provided by qgis2compat "
-                "it cannot be unloaded (unchecked in the plugin manager). "
-                "If you don't need it anymore, please uninstall it")
+                "it cannot be loaded/unloaded ([un]checked in the plugin "
+                "manager). If you don't need it anymore, please uninstall it.")
         if ORIGINAL_MODULE is not None:
             sys.modules['qgis.PyQt'] = ORIGINAL_MODULE
