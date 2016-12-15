@@ -33,12 +33,14 @@ def log(message):
 def _qgis2_version():
     #QGIS enterprise uses a different versioning schema.
     # Let's remap their schema to the real API version
-    qgis_enterprise_map = {21502: 20800}
+    qgis_enterprise_map = {21501: 20800,
+                           21502: 20800,
+                           21503: 20800}
 
     from qgis.PyQt.QtCore import QCoreApplication
     version = qgis.utils.QGis.QGIS_VERSION_INT
     if QCoreApplication.applicationName().startswith('QGIS Enterprise'):
-        version = qgis_enterprise_map[qgis.utils.QGIS_VERSION_INT]
+        version = qgis_enterprise_map[version]
     return version
 
 
