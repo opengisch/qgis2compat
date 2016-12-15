@@ -48,6 +48,9 @@ def classFactory(iface):  # pylint: disable=invalid-name
 
 
 class QgisCompat(object):
+    def __init__(self):
+        self.original_module = None
+
     # noinspection PyPep8Naming
     def initGui(self):
         # qgis.utils.QGis is available in QGIS < 3
@@ -66,5 +69,5 @@ class QgisCompat(object):
             QGIS_VERSION = qgis.core.Qgis.QGIS_VERSION_INT
 
     def unload(self):
-        if self.original_module:
+        if self.original_module is not None:
             sys.modules['qgis.PyQt'] = self.original_module
