@@ -24,6 +24,7 @@ import sys
 import qgis.utils
 
 QGIS_VERSION = 0
+ORIGINAL_MODULE = None
 
 def log(message):
     print('QGIS2compat: %s' % message)
@@ -41,33 +42,54 @@ def _qgis2_version():
     return version
 
 
+# qgis.utils.QGis is available in QGIS < 3
+if hasattr(qgis.utils, 'QGis'):
+    if 'qgis2compat.PyQt' in sys.modules:
+        del sys.modules['qgis2compat.PyQt']
+    import qgis2compat.PyQt
+
+    log('setting qgis.PyQt = qgis2compat.PyQt')
+    if 'qgis.PyQt' in sys.modules:
+        ORIGINAL_MODULE = sys.modules['qgis.PyQt']
+    sys.modules["qgis.PyQt"] = qgis2compat.PyQt
+
+    QGIS_VERSION = _qgis2_version()
+else:
+    QGIS_VERSION = qgis.core.Qgis.QGIS_VERSION_INT
+
+
+
 # FROM here is all needed to make QGIS's plugin manager happy
 # noinspection PyPep8Naming
 def classFactory(iface):  # pylint: disable=invalid-name
-    return QgisCompat()
+    return QgisCompat(iface)
 
 
 class QgisCompat(object):
-    def __init__(self):
-        self.original_module = None
+
+    def __init__(self, iface):
+        """Class constructor.
+
+        On instantiation, the plugin instance will be assigned a copy
+        of the QGIS iface object which will allow this plugin to access and
+        manipulate the running QGIS instance that spawned it.
+
+        :param iface:Quantum GIS iface instance. This instance is
+            automatically passed to the plugin by QGIS when it loads the
+            plugin.
+        :type iface: QGisAppInterface
+        """
+        self.iface = iface
 
     # noinspection PyPep8Naming
     def initGui(self):
-        # qgis.utils.QGis is available in QGIS < 3
-        if hasattr(qgis.utils, 'QGis'):
-            if 'qgis2compat.PyQt' in sys.modules:
-                del sys.modules['qgis2compat.PyQt']
-            import qgis2compat.PyQt
-
-            log('setting qgis.PyQt = qgis2compat.PyQt')
-            if 'qgis.PyQt' in sys.modules:
-                self.original_module = sys.modules['qgis.PyQt']
-            sys.modules["qgis.PyQt"] = qgis2compat.PyQt
-
-            QGIS_VERSION = _qgis2_version()
-        else:
-            QGIS_VERSION = qgis.core.Qgis.QGIS_VERSION_INT
+        pass
 
     def unload(self):
-        if self.original_module is not None:
-            sys.modules['qgis.PyQt'] = self.original_module
+        self.iface.messageBar().pushWarning(
+                "qgis2compat warning",
+                "Due to the very special functionality provided by qgis2compat "
+                "it cannot be unloaded (unchecked in the plugin manager). "
+                "If you don't need it anymore, please uninstall it")
+        if ORIGINAL_MODULE is not None:
+            sys.modules['qgis.PyQt'] = ORIGINAL_MODULE
