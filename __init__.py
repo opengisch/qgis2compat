@@ -57,7 +57,8 @@ class QgisCompat(object):
             import qgis2compat.PyQt
 
             log('setting qgis.PyQt = qgis2compat.PyQt')
-            self.original_module = sys.modules['qgis.PyQt']
+            if 'qgis.PyQt' in sys.modules:
+                self.original_module = sys.modules['qgis.PyQt']
             sys.modules["qgis.PyQt"] = qgis2compat.PyQt
 
             QGIS_VERSION = _qgis2_version()
@@ -65,4 +66,5 @@ class QgisCompat(object):
             QGIS_VERSION = qgis.core.Qgis.QGIS_VERSION_INT
 
     def unload(self):
-        sys.modules['qgis.PyQt'] = self.original_module
+        if self.original_module:
+            sys.modules['qgis.PyQt'] = self.original_module
