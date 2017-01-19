@@ -12,6 +12,7 @@ if not initialized and hasattr(qgis.utils, 'QGis'):
     log('Running apicompat on QGIS version %s' % QGIS_VERSION)
 
     # Here import all the compatibility fixes modules
+    import qgis2compat.apicompat.qgsapplication
     import qgis2compat.apicompat.qgsvectorlayer
     import qgis2compat.apicompat.qgsrasterlayer
     import qgis2compat.apicompat.qgsproject
