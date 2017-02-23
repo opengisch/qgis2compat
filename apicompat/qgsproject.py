@@ -41,7 +41,10 @@ qgis.core.QgsProject.write = write
 
 original_QgsProject_read = qgis.core.QgsProject.read
 
-def read(self, filename):
-    return original_QgsProject_read(self, QFileInfo(filename))
+def read(self, filename=None):
+    if filename:
+        return original_QgsProject_read(self, QFileInfo(filename))
+    else:
+        return original_QgsProject_read(self)
 
 qgis.core.QgsProject.read = read
