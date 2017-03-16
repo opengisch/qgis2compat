@@ -27,6 +27,11 @@ def removeMapLayer(self, layer):
 
 qgis.core.QgsProject.removeMapLayer = removeMapLayer
 
+def addMapLayer(self, mapLayer, addToLegend = True, takeOwnership = True):
+    return qgis.core.QgsMapLayerRegistry.instance().addMapLayer(mapLayer, addToLegend, takeOwnership)
+
+qgis.core.QgsProject.addMapLayer = addMapLayer
+
 def mapLayer(self, layerId):
     return qgis.core.QgsMapLayerRegistry.instance().mapLayer(layerId)
 
