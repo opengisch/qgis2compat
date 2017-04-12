@@ -33,7 +33,11 @@ from QtPrintSupport import *
 from QtSql import *
 from QtSvg import *
 from QtTest import *
-from QtWebKit import *
-from QtWebKitWidgets import *
+try:
+    from QtWebKit import *
+    from QtWebKitWidgets import *
+except ImportError:
+    # Some distros don't ship that (newer Ubuntu/Debian mainly)
+    pass
 from QtWidgets import *
 from QtXml import *
