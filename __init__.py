@@ -46,6 +46,7 @@ def _qgis2_version():
 
 # qgis.utils.QGis is available in QGIS < 3
 if hasattr(qgis.utils, 'QGis'):
+    ORIGINAL_UIC = None
     if 'qgis2compat.PyQt' in sys.modules:
         del sys.modules['qgis2compat.PyQt']
     import qgis2compat.PyQt
@@ -53,7 +54,12 @@ if hasattr(qgis.utils, 'QGis'):
     log('setting qgis.PyQt = qgis2compat.PyQt')
     if 'qgis.PyQt' in sys.modules:
         ORIGINAL_MODULE = sys.modules['qgis.PyQt']
+    if 'qgis.PyQt.uic' in sys.modules:
+        ORIGINAL_UIC = sys.modules['qgis.PyQt.uic']
     sys.modules["qgis.PyQt"] = qgis2compat.PyQt
+
+    if ORIGINAL_UIC:
+        sys.modules['qgis.PyQt.uic'] = ORIGINAL_UIC
 
     QGIS_VERSION = _qgis2_version()
 else:
